@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelişmiş Personel Kayıt Formu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            min-height: 100vh;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+            padding: 20px;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #495057;
+        }
+    </style>
+</head>
+<body class="py-5">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3><i class="bi bi-person-badge-fill me-2"></i>Personel Başvuru Formu</h3>
+                    <p class="mb-0 opacity-75">Lütfen tüm alanları eksiksiz doldurunuz.</p>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    
+                    <form class="needs-validation" novalidate>
+
+                        <h5 class="mb-3 text-primary border-bottom pb-2">1. Kimlik Bilgileri</h5>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="tcNo" class="form-label">T.C. Kimlik No</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text"><i class="bi bi-credit-card-2-front"></i></span>
+                                    <input type="text" class="form-control" id="tcNo" placeholder="11 Haneli No" pattern="\d{11}" required>
+                                    <div class="invalid-feedback">Geçerli bir T.C. Kimlik numarası giriniz.</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="ad" class="form-label">Ad</label>
+                                <input type="text" class="form-control" id="ad" required>
+                                <div class="valid-feedback">Harika görünüyor!</div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="soyad" class="form-label">Soyad</label>
+                                <input type="text" class="form-control" id="soyad" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="dogumTarihi" class="form-label">Doğum Tarihi</label>
+                                <input type="date" class="form-control" id="dogumTarihi" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="telefon" class="form-label">Cep Telefonu</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">+90</span>
+                                    <input type="tel" class="form-control" id="telefon" placeholder="5XX XXX XX XX" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 class="mb-3 mt-5 text-primary border-bottom pb-2">2. Hesap ve İş Detayları</h5>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="kullaniciAdi" class="form-label">Kullanıcı Adı</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text">@</span>
+                                    <input type="text" class="form-control" id="kullaniciAdi" required>
+                                    <div class="invalid-feedback">Lütfen bir kullanıcı adı belirleyin.</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="departman" class="form-label">Başvurduğunuz Departman</label>
+                                <select class="form-select" id="departman" required>
+                                    <option selected disabled value="">Seçim yapınız...</option>
+                                    <option>Bilgi Teknolojileri (IT)</option>
+                                    <option>İnsan Kaynakları</option>
+                                    <option>Pazarlama</option>
+                                    <option>Operasyon</option>
+                                </select>
+                                <div class="invalid-feedback">Lütfen bir departman seçin.</div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="deneyim" class="form-label d-flex justify-content-between">
+                                    <span>Sektördeki Deneyiminiz (Yıl)</span>
+                                    <span id="deneyimDegeri" class="badge bg-primary rounded-pill">0 Yıl</span>
+                                </label>
+                                <input type="range" class="form-range" min="0" max="20" step="1" id="deneyim" oninput="document.getElementById('deneyimDegeri').innerText = this.value + ' Yıl'">
+                            </div>
+                        </div>
+
+                        <h5 class="mb-3 mt-5 text-primary border-bottom pb-2">3. İletişim Adresi</h5>
+                        
+                        <div class="row g-2">
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Adres" id="adres" style="height: 100px" required></textarea>
+                                    <label for="adres">Açık Adres</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="sehirSelect" required>
+                                        <option selected disabled value="">Seçiniz...</option>
+                                        <option>İstanbul</option>
+                                        <option>Ankara</option>
+                                        <option>İzmir</option>
+                                    </select>
+                                    <label for="sehirSelect">Şehir</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="postaKodu" placeholder="Posta Kodu">
+                                    <label for="postaKodu">Posta Kodu</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mt-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="onayKutusu" required>
+                                <label class="form-check-label" for="onayKutusu">
+                                    <a href="#" class="text-decoration-none">Kullanıcı sözleşmesini</a> ve şartları okudum, kabul ediyorum.
+                                </label>
+                                <div class="invalid-feedback">
+                                    Devam etmek için sözleşmeyi onaylamalısınız.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button class="btn btn-primary btn-lg" type="submit">
+                                <i class="bi bi-send-fill me-2"></i>Başvuruyu Gönder
+                            </button>
+                        </div>
+
+                    </form>
+                    </div>
+                <div class="card-footer text-center text-muted py-3">
+                    &copy; 2024 Şirket Adı - Tüm Hakları Saklıdır
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Form doğrulama işlemlerini tetikleyen JavaScript
+    (() => {
+        'use strict'
+
+        // Doğrulama stili uygulanacak formları seç
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Formları döngüye al ve gönderimi dinle
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                // Eğer form geçerli değilse
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                // Doğrulama sınıflarını ekle (was-validated)
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
+
+</body>
+</html>
